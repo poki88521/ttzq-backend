@@ -13,10 +13,11 @@ COPY . .
 
 # 声明运行时容器提供服务端口
 # 注意：微信云托管部署时填写的端口必须与此处保持一致
-EXPOSE 80
+EXPOSE 5000
 
 # 配置环境变量
 ENV FLASK_APP=app.py
 
 # 指定容器启动时运行的命令
-CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+
