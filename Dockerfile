@@ -6,7 +6,7 @@ WORKDIR /app
 
 # 复制依赖文件并安装（如果你的项目有 requirements.txt）
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+RUN pip install --no-cache-dir -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --timeout 120
 
 # 复制项目所有文件到容器的工作目录
 COPY . .
@@ -20,4 +20,5 @@ ENV FLASK_APP=app.py
 
 # 指定容器启动时运行的命令
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+
 
