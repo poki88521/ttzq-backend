@@ -2,6 +2,11 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
+
+origins = [
+    "https://poki88521.github.io"
+]
+
 CORS(app,
      origins=origins,                   # 明确指定允许的源，避免使用通配符 '*'
      methods=["GET", "POST", "OPTIONS"], # 明确指定允许的HTTP方法
