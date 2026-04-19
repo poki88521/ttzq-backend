@@ -20,5 +20,9 @@ def echo():
     reply = f'你发送了：{message}'
     return jsonify({'reply': reply})
 
+@app.route('/')
+def index():
+    return "Flask 后端服务运行正常，请使用 POST 请求访问 /api/echo 接口。"
+
 if __name__ == '__main__':
     app.run(port=5000)
